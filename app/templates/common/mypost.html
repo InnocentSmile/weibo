@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% from 'marco.html' import show_pagination %}
+{% block title %}首页{% endblock %}
+
+{% block page_content %}
+    <h1 align="center">我的微博</h1>
+    {% for post in posts %}
+        <div class="media">
+            <div style="float: left">
+                <a href="{{ url_for('users.udetail',uid=post.user.id) }}">
+                    <img class="media-object" src="{{ url_for('static',filename = 'uploads/' + post.user.icon) }}"
+                         style="width: 50px;height: 50px;border-radius: 25px;" alt="用户头像">
+                </a>
+            </div>
+            <div class="media-body">
+                <h3 class="media-heading">{{ post.user.username }}</h3>
+                <p>{{ moment(post.timestamp).fromNow() }}&nbsp;&nbsp;访问量:{{ post.visitors }}</p>
+                {{ post.content }}
+            </div>
+            {# 显示缩略图 #}
+            <div style="float: right;">
+                <a href="#">
+                    <img class="media-object" src="{{ url_for('static',filename = 'uploads/' + post.pic) }}"
+                         style="width: 60px;height: 60px;" alt="帖子缩略图">
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+    <hr>
+    {{ show_pagination(pagination) }}
+
+{% endblock %}
+
+

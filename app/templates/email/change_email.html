@@ -1,0 +1,3 @@
+<h1>您好:{{ username }}</h1>
+<p>请点击右边链接完成邮箱修改<a href="{{ url_for('users.success_change_email', token=token, _external=True) }}">
+{{ url_for('users.success_change_email', token=token, _external=True) }}</a></p>

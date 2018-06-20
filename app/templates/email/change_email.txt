@@ -1,0 +1,3 @@
+您好:{{ username }}
+请点击右边链接完成修改
+{{ url_for('users.success_change_email', token=token, _external=True) }}

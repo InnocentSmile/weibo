@@ -1,0 +1,29 @@
+{% macro show_pagination(pagination,search,category) %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            {# 上一页 #}
+            <li {% if not pagination.has_prev %} class="disabled" {% endif %}>
+                <a href="{% if pagination.has_prev %}?page={{ pagination.prev_num }}&search={{ search }}&category={{ category }}{% else %}#{% endif %}"
+                   aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {# 中间页码 #}
+            {% for page in pagination.iter_pages() %}
+                {% if page %}
+                    <li {% if pagination.page == page %}class="active"{% endif %}><a href="?page={{ page }}&search={{ search }}&category={{ category }}">{{ page }}</a></li>
+                {% else %}
+                    <li><a href="#">&hellip;</a></li>
+                {% endif %}
+            {% endfor %}
+            {# 下一页 #}
+            <li {% if not pagination.has_next %} class="disabled" {% endif %}>
+                <a href="{% if pagination.has_next %}?page={{ pagination.next_num }}&search={{ search }}&category={{ category }}{% else %}#{% endif %}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+{% endmacro %}
+
+

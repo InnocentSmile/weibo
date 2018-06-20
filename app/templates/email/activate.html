@@ -1,0 +1,3 @@
+<h1>您好:{{ username }}&nbsp;</h1>
+<p>请点击右边链接激活<a href="{{ url_for('users.activate', token=token, _external=True) }}">
+{{ url_for('users.activate', token=token, _external=True) }}</a></p>

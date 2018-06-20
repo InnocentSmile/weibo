@@ -1,0 +1,2 @@
+您好:{{ username }}
+验证码:{{ authcode }}

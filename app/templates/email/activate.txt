@@ -1,0 +1,2 @@
+您好:{{ username }}
+请点击右边链接激活url_for('users.activate', token=token, _external=True) }}
